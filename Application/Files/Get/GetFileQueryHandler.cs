@@ -1,6 +1,7 @@
 ﻿using Domain.Abstractions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using FileNotFoundException = Domain.Entities.File.FileNotFoundException;
 
 namespace Application.Files.Get;
 
@@ -23,7 +24,7 @@ public sealed class GetFileQueryHandler : IRequestHandler<GetFileQuery, FileResp
 
         if (file is null)
         {
-            throw new NotImplementedException();
+            throw new FileNotFoundException(request.Id);
         }
         
         return file;

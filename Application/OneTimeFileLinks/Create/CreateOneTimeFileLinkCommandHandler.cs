@@ -1,11 +1,11 @@
 ﻿using Domain.Abstractions;
-using Domain.Entities;
 using Domain.Entities.OneTimeFileLink;
 using MediatR;
+using FileNotFoundException = Domain.Entities.File.FileNotFoundException;
 
 namespace Application.OneTimeFileLinks.Create;
 
-public class CreateOneTimeFileLinkCommandHandler 
+public class CreateOneTimeFileLinkCommandHandler
     : IRequestHandler<CreateOneTimeFileLinkCommand, OneTimeFileLinkResponse>
 {
     private readonly IOneTimeFileLinkRepository _oneTimeFileLinkRepository;
@@ -22,15 +22,16 @@ public class CreateOneTimeFileLinkCommandHandler
         _fileRepository = fileRepository;
     }
 
-    public async Task<OneTimeFileLinkResponse> Handle(CreateOneTimeFileLinkCommand request, CancellationToken cancellationToken)
+    public async Task<OneTimeFileLinkResponse> Handle(CreateOneTimeFileLinkCommand request,
+        CancellationToken cancellationToken)
     {
         var file = await _fileRepository.GetByIdAsync(request.Id);
 
         if (file is null)
         {
-            throw new NotImplementedException();
+            throw new FileNotFoundException(request.Id);
         }
-        
+
         var link = new OneTimeFileLink(new OneTimeFileLinkId(Guid.NewGuid()), file.Id);
 
         await _oneTimeFileLinkRepository.AddAsync(link);

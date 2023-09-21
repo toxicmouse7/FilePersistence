@@ -1,4 +1,5 @@
 ﻿using Domain.Abstractions;
+using Domain.Entities.OneTimeFileLink;
 using MediatR;
 
 namespace Application.OneTimeFileLinks.Remove;
@@ -21,7 +22,7 @@ public class RemoveOneTimeFileLinkCommandHandler : IRequestHandler<RemoveOneTime
         var link = await _oneTimeFileLinkRepository.GetByIdAsync(request.Id);
         if (link is null)
         {
-            throw new NotImplementedException();
+            throw new OneTimeFileLinkNotFoundException(request.Id);
         }
         
         _oneTimeFileLinkRepository.Remove(link);

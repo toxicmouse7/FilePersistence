@@ -1,8 +1,9 @@
 ﻿using Application.Files.Get;
 using Domain.Abstractions;
+using Domain.Entities.OneTimeFileLink;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using File = Domain.Entities.File.File;
+using FileNotFoundException = Domain.Entities.File.FileNotFoundException;
 
 namespace Application.OneTimeFileLinks.GetFile;
 
@@ -24,7 +25,7 @@ public class GetFileByLinkQueryHandler : IRequestHandler<GetFileByLinkQuery, Fil
 
         if (link is null)
         {
-            throw new NotImplementedException();
+            throw new OneTimeFileLinkNotFoundException(request.Id);
         }
 
         var file = await _context
@@ -34,7 +35,7 @@ public class GetFileByLinkQueryHandler : IRequestHandler<GetFileByLinkQuery, Fil
 
         if (file is null)
         {
-            throw new NotImplementedException();
+            throw new FileNotFoundException(link.FileId);
         }
 
         var fileResponse = new FileResponse(file.Id.Value, file.Name, file.Content);

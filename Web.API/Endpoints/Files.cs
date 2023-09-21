@@ -4,6 +4,7 @@ using Application.Files.Upload;
 using Carter;
 using Domain.Entities.File;
 using MediatR;
+using FileNotFoundException = Domain.Entities.File.FileNotFoundException;
 
 namespace Web.API.Endpoints;
 
@@ -27,8 +28,17 @@ public class Files : ICarterModule
         group.MapGet("{id:guid}", async (Guid id, ISender sender) =>
         {
             var query = new GetFileQuery(new FileId(id));
-            var fileResponse = await sender.Send(query);
-            return Results.File(fileResponse.Content, null, fileResponse.Name);
+            
+            try
+            {
+                var fileResponse = await sender.Send(query);
+                return Results.File(fileResponse.Content, null, fileResponse.Name);
+            }
+            catch (FileNotFoundException e)
+            {
+                return Results.NotFound(e.Message);
+            }
+            
         }).WithSummary("Download file");
         
         group.MapGet("", async (ISender sender) =>
