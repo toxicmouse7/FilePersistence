@@ -5,6 +5,7 @@ using Carter;
 using Domain.Entities.File;
 using MediatR;
 using FileNotFoundException = Domain.Entities.File.FileNotFoundException;
+using FileResponse = Application.Files.List.FileResponse;
 
 namespace Web.API.Endpoints;
 
@@ -45,7 +46,8 @@ public class Files : ICarterModule
         {
             var files = await sender.Send(new ListFilesQuery());
             return Results.Ok(files);
-        }).WithSummary("List files");
+        }).WithSummary("List files")
+            .Produces<IEnumerable<FileResponse>>();
 
         group.WithTags("Files").WithOpenApi();
     }

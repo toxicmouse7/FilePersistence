@@ -11,16 +11,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22d36a77-f54b-4a66-ae5c-d227153e47b8" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/File/FileNotFoundException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/OneTimeFileLink/OneTimeFileLinkNotFoundException.cs" afterDir="false" />
+    <list default="true" id="22d36a77-f54b-4a66-ae5c-d227153e47b8" name="Changes" comment="feat: add custom exception and handling of them">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FilePersistance/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FilePersistance/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Files/Get/GetFileQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Files/Get/GetFileQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/OneTimeFileLinks/Create/CreateOneTimeFileLinkCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/OneTimeFileLinks/Create/CreateOneTimeFileLinkCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/OneTimeFileLinks/GetFile/GetFileByLinkQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/OneTimeFileLinks/GetFile/GetFileByLinkQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/OneTimeFileLinks/Remove/RemoveOneTimeFileLinkCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/OneTimeFileLinks/Remove/RemoveOneTimeFileLinkCommandHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web.API/Endpoints/Files.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Web.API/Endpoints/Files.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web.API/Endpoints/OneTimeFileLinks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Web.API/Endpoints/OneTimeFileLinks.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +25,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/de67dfa615e7ecdd7f01f1c8724141eab17c01fcb0b8d6333da544af061b9/ContentType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Aleksej/RiderProjects/FilePersistance/Application/OneTimeFileLinks/Create/CreateOneTimeFileLinkCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -144,7 +138,7 @@
       <updated>1695232429427</updated>
       <workItem from="1695232431958" duration="2205000" />
       <workItem from="1695234673084" duration="6101000" />
-      <workItem from="1695288784996" duration="8828000" />
+      <workItem from="1695288784996" duration="9093000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -154,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695296902158</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: add custom exception and handling of them">
+      <option name="closed" value="true" />
+      <created>1695297870022</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695297870022</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +166,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="feat: add custom exception and handling of them" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add custom exception and handling of them" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -181,6 +184,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Web.API/Endpoints/Files.cs</url>
+          <line>39</line>
+          <properties documentPath="C:\Users\Aleksej\RiderProjects\FilePersistance\Web.API\Endpoints\Files.cs" initialLine="38" containingFunctionPresentation="Lambda expression inside Method 'AddRoutes'">
+            <startOffsets>
+              <option value="1242" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1277" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
