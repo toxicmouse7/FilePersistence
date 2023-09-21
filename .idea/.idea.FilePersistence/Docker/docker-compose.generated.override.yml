@@ -1,0 +1,23 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  web.api:
+    build:
+      context: "C:\\Users\\Aleksej\\RiderProjects\\FilePersistance"
+      dockerfile: "Web.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net7.0/Web.API.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      NUGET_PACKAGES: "C:\\Users\\Aleksej\\.nuget\\packages"
+      NUGET_FALLBACK_PACKAGES: "C:\\Users\\Aleksej\\.nuget\\packages"
+    image: "web.api:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\Aleksej\\.nuget\\packages:/root/.nuget/fallbackpackages"
+    - "C:\\Users\\Aleksej\\RiderProjects\\FilePersistance\\Web.API:/app:rw"
+    - "C:\\Users\\Aleksej\\RiderProjects\\FilePersistance:/src:rw"
+    working_dir: "/app"

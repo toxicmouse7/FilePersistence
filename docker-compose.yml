@@ -1,0 +1,25 @@
+﻿services:
+  web.api:
+    image: web.api
+    pull_policy: build
+    build:
+      context: .
+      dockerfile: Web.API/Dockerfile
+    ports:
+      - 7000:7000
+    depends_on:
+      database:
+        condition: service_healthy
+  
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123123
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
